@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+<body>
+    <div class="chatHistory" th:object="${chat}">
+        <div th:each="chatText : ${chatList}">
+            <span th:text="${chatText.user} + ': ' + ${chatText.message}">USER</span>
+        </div>
+    </div>
+    <form>
+        <textarea rows="4" cols="80">Input message here</textarea>
+        <input type="submit">
+    </form>
+</body>
+</html>
