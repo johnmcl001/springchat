@@ -7,14 +7,30 @@
     <title>Chat</title>
 </head>
 <body>
-    <div class="chatHistory" th:object="${chat}">
-        <div th:each="chatText : ${chatList}">
-            <span th:text="${chatText.user} + ': ' + ${chatText.message}">USER</span>
+    <div class="chatHistory">
+        <div th:each="chat : ${chatHistory}">
+            <span th:text="${chat.user} + ': ' + ${chat.message}">USER</span>
         </div>
     </div>
-    <form>
-        <textarea rows="4" cols="80">Input message here</textarea>
-        <input type="submit">
+
+    <form method="POST" th:action="@{/chat}" th:object="${chat}">
+
+        <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Please correct the problem below
+        </span>
+        </div>
+
+        <p>
+            User: <input type="text" th:field="*{user}"/>
+            <span th:if="${#fields.hasErrors('user')}"
+                  th:errors="*{user}">USER ERROR</span>
+        </p>
+        <p>Message: <input type="text" th:field="*{message}"/>
+            <span th:if="${#fields.hasErrors('message')}"
+              th:errors="*{message}">MESSAGE ERROR</span>
+        </p>
+        <p><input type="submit" value="Submit" /></p>
     </form>
 </body>
 </html>
