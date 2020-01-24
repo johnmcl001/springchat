@@ -1,4 +1,4 @@
-package com.jmcl.springchat.web;
+package com.jmcl.springchat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

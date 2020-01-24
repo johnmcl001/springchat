@@ -8,12 +8,11 @@ import javax.validation.constraints.Size;
 
 @Data
 @RequiredArgsConstructor
-public class Chat {
+public class User {
 
-    @NotBlank(message="Please specify a user")
-    private final String user;
+    @NotBlank(message="Please enter your name")
+    private final String realName;
 
-    @Size(min=5, max=120, message="Message must be 5 to 120 characters long")
-    private final String message;
-
+    @Size(min=3, max=10, message="Please enter a valid username")
+    private final String userName;
 }
